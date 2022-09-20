@@ -18,10 +18,18 @@ const getData = async () => {
 
 
 const ConnectionStep = ({onNext}) => {
+
+    useEffect(() => {
+        setTimeout(() => {
+            onNext();
+        },3000)
+    })
+
     return  (
         <div className="step-container">
-            <div className="description">First lets see if the connection its working</div>
-            <div className="btn" onClick={onNext}>Next</div>
+            <div className="description">First let's see if the connection its working.</div>
+            <div className="loader"/>
+            <div></div>
         </div>
     )
 };
@@ -30,8 +38,9 @@ const ConnectionStep = ({onNext}) => {
 const TestingStep = ({onNext}) => {
     return  (
         <div className="step-container">
-            <div className="description">Make sure to text it before using it</div>
-            <div className="btn" onClick={onNext}>Next</div>
+            <div className="description">Make sure to test it before using it</div>
+            <div className="icon testing-icon"/>
+            <div className="btn" onClick={onNext}>Done</div>
         </div>
     )
 };
