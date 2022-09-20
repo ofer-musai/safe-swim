@@ -33,10 +33,10 @@ function App() {
 
     useEffect(() => {
         if(isActive) {
-            // sound.currentTime = 0;
-            // sound.play();
+            sound.currentTime = 0;
+            sound.play();
         }else {
-            // sound.pause();
+            sound.pause();
         }
     }, [isActive]);
 
@@ -53,7 +53,13 @@ function App() {
             </div>
             <div className="content">
                 <div className="image"/>
-                <div onClick={muteSound} className={`status ${isActive ? 'active' : 'in-active' }`}></div>
+                <div onClick={muteSound} className={`status ${isActive ? 'active' : 'in-active' }`}>
+                    <div className="ocean">
+                        <div className="wave"></div>
+                        <div className="wave"></div>
+                    </div>
+
+                </div>
             </div>
         </div>
   );
