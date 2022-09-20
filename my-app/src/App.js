@@ -47,8 +47,12 @@ function App() {
 
     return (
         <div className="App">
-            <div className="header">Safe Swim</div>
+            <div className="header">
+                <div className="header-logo"/>
+                <div className="header-text">Safe Swim</div>
+            </div>
             <div className="content">
+                <div className="image"/>
                 <div onClick={muteSound} className={`status ${isActive ? 'active' : 'in-active' }`}></div>
             </div>
         </div>
