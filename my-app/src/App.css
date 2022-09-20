@@ -160,6 +160,10 @@
   margin: auto;
 }
 
+.step-container .testing-icon.enable {
+  background-image: url("./testing-valid-icon.png");
+}
+
 .loader {
   font-size: 10px;
   margin: 50px auto;
@@ -238,6 +242,9 @@
   box-shadow: 0 8px 15px rgb(0 0 0 / 10%);
 }
 
+.step-container .btn.disable{
+  visibility: hidden;
+}
 
 
 .App-logo {

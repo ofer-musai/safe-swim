@@ -4,12 +4,27 @@ import alarmSrc from './alarm.wav';
 
 let intervalId = null;
 const INTERVAL_DELAY = 1000;
+const RETRY_MAX = 3;
 
 const sound = new Audio(alarmSrc);
 sound.loop = true;
 
+
+async function fetchWithTimeout(resource, options = {}) {
+    const { timeout = 2000 } = options;
+
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), timeout);
+    const response = await fetch(resource, {
+        ...options,
+        signal: controller.signal
+    });
+    clearTimeout(id);
+    return response;
+}
+
 const getData = async () => {
-    const res = await fetch('http://192.168.4.1/status');
+    const res = await fetchWithTimeout('http://192.168.4.1/status');
     const data = await res.json();
     console.log('data', data);
     return data;
@@ -18,12 +33,46 @@ const getData = async () => {
 
 
 const ConnectionStep = ({onNext}) => {
+    const [error, setError] = useState(false);
+
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         onNext();
+    //     },3000)
+    // })
 
     useEffect(() => {
-        setTimeout(() => {
-            onNext();
-        },3000)
-    })
+        let retryCount = 0;
+
+        const polling = async () => {
+            try {
+                const data = await getData();
+                console.log('data', data);
+                onNext();
+            }catch (e) {
+                console.log('e', e);
+                if(retryCount < RETRY_MAX){
+                    retryCount++;
+                    setTimeout(() => {
+                        polling();
+                    }, 1000)
+                }else {
+                    setError(true)
+                }
+            }
+        };
+
+        polling();
+    }, []);
+
+    if(error){
+        return  (
+            <div className="step-container">
+                <div className="description">Cant connect to device.</div>
+            </div>
+        )
+    }
+
 
     return  (
         <div className="step-container">
@@ -36,11 +85,30 @@ const ConnectionStep = ({onNext}) => {
 
 
 const TestingStep = ({onNext}) => {
+    const [isTested, setIsTested] = useState(false);
+    useEffect(() => {
+        const polling = async () => {
+            const data = await getData();
+
+            if(!isTested && data === 1){
+                setIsTested(true);
+            }
+        };
+
+        polling();
+        intervalId = setInterval(polling, INTERVAL_DELAY);
+
+        return () => {
+            clearInterval(intervalId)
+        }
+    }, []);
+
+
     return  (
         <div className="step-container">
             <div className="description">Make sure to test it before using it</div>
-            <div className="icon testing-icon"/>
-            <div className="btn" onClick={onNext}>Done</div>
+            <div className={`icon testing-icon ${isTested ? 'enable' : 'disable'}`}/>
+            <div className={`btn ${isTested ? 'enable' : 'disable'}`} onClick={isTested ? onNext : () => {}}>Done</div>
         </div>
     )
 };
