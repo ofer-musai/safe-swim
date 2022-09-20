@@ -8,8 +8,8 @@
 }
 
 
-.App {
-  text-align: center;
+html, body, #root, .App {
+  height: 100%;
 }
 
 .header {
@@ -40,7 +40,7 @@
 
 .content {
   position: relative;
-  height: 100vh;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -138,9 +138,11 @@
 }
 
 
-
 .step-container {
-  height: 50%;
+  height: calc(100% - 400px);
+  padding-top: 40px;
+  box-sizing: border-box;
+
   align-self: end;
   display: flex;
   flex-direction: column;

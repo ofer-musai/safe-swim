@@ -65,10 +65,17 @@ const ConnectionStep = ({onNext}) => {
         polling();
     }, []);
 
+    const reconnect = () => {
+        connect();
+        setError(false);
+     }
+
+
     if(error){
         return  (
             <div className="step-container">
                 <div className="description">Cant connect to device.</div>
+                <div className="btn" onClick={reconnect}>Reconnect</div>
             </div>
         )
     }
@@ -166,7 +173,6 @@ function App() {
     }
 
     const Comp = step === 3 ? Main : step === 2 ? TestingStep : ConnectionStep;
-
 
     return (
         <div className="App">
