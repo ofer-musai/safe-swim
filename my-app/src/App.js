@@ -15,7 +15,17 @@ const getData = async () => {
     return data;
 }
 
-function App() {
+
+
+const ConnectionStep = ({onNext}) => {
+    return <div onClick={onNext}>ConnectionStep</div>
+};
+
+const TestingStep = ({onNext}) => {
+    return <div onClick={onNext}>TestingStep</div>
+};
+
+const Main = () => {
     const [isActive, setIsActive] = useState(false);
     useEffect(() => {
         const polling = async () => {
@@ -46,12 +56,7 @@ function App() {
     };
 
     return (
-        <div className="App">
-            <div className="header">
-                <div className="header-logo"/>
-                <div className="header-text">Safe Swim</div>
-            </div>
-            <div className="content">
+            <>
                 <div className="image"/>
                 <div onClick={muteSound} className={`status ${isActive ? 'active' : 'in-active' }`}>
                     <div className="ocean">
@@ -60,9 +65,37 @@ function App() {
                     </div>
 
                 </div>
+            </>
+    );
+};
+
+
+function App() {
+    const [step, setStep] = useState(1);
+
+    const onNext = () => {
+        setStep(step + 1)
+    }
+
+    const Comp = step === 3 ? Main : step === 2 ? TestingStep : ConnectionStep;
+
+
+    return (
+        <div className="App">
+            <div className="header">
+                <div className="header-logo"/>
+                <div className="header-text">Safe Swim</div>
+            </div>
+            <div className="content">
+                <div className="image"/>
+
+
+                <Comp onNext={onNext}/>
+
             </div>
         </div>
-  );
+    )
+
 }
 
 export default App;
