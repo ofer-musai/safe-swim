@@ -140,6 +140,29 @@
 
 
 
+.step-container {
+  height: 50%;
+  align-self: end;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+}
+
+.step-container .description {
+
+}
+.step-container .btn{
+  background: #2a9f2a;
+  color: white;
+  border-radius: 4px;
+  width: 160px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px auto;
+}
 
 
 

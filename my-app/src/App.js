@@ -18,11 +18,22 @@ const getData = async () => {
 
 
 const ConnectionStep = ({onNext}) => {
-    return <div onClick={onNext}>ConnectionStep</div>
+    return  (
+        <div className="step-container">
+            <div className="description">First lets see if the connection its working</div>
+            <div className="btn" onClick={onNext}>Next</div>
+        </div>
+    )
 };
 
+
 const TestingStep = ({onNext}) => {
-    return <div onClick={onNext}>TestingStep</div>
+    return  (
+        <div className="step-container">
+            <div className="description">Make sure to text it before using it</div>
+            <div className="btn" onClick={onNext}>Next</div>
+        </div>
+    )
 };
 
 const Main = () => {
@@ -88,10 +99,7 @@ function App() {
             </div>
             <div className="content">
                 <div className="image"/>
-
-
                 <Comp onNext={onNext}/>
-
             </div>
         </div>
     )
