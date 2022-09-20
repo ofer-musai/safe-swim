@@ -41,7 +41,7 @@ const ConnectionStep = ({onNext}) => {
     //     },3000)
     // })
 
-    useEffect(() => {
+    const connect = () => {
         let retryCount = 0;
 
         const polling = async () => {
@@ -61,8 +61,12 @@ const ConnectionStep = ({onNext}) => {
                 }
             }
         };
-
         polling();
+    }
+
+
+    useEffect(() => {
+        connect();
     }, []);
 
     const reconnect = () => {
