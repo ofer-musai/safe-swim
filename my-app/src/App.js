@@ -152,7 +152,6 @@ const Main = () => {
 
     const muteSound = () => {
         sound.pause();
-        setIsActive(!isActive);
     };
 
     return (
@@ -171,7 +170,7 @@ const Main = () => {
 
 
 function App() {
-    const [step, setStep] = useState(3);
+    const [step, setStep] = useState(1);
 
     const onNext = () => {
         setStep(step + 1)
