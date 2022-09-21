@@ -327,3 +327,44 @@ body,
     transform: rotate(360deg);
   }
 }
+
+
+.step-container.cpr{
+  justify-content: start;
+}
+
+.cpr-step {
+  display: flex;
+  align-items: center;
+  color: #bedde0;
+  padding: 15px 30px;
+}
+
+.cpr-step .icon {
+  height: 60px;
+  width: 60px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+}
+
+.cpr-step .text {
+  padding: 20px;
+}
+
+.cpr-step .icon.step1 {
+  background-image: url("./step1.png");
+}
+
+.cpr-step .icon.step2 {
+  background-image: url("./step2.png");
+}
+
+.cpr-step .icon.step3 {
+  background-image: url("./step3.png");
+}
+
+.cpr-step .icon.step4 {
+  background-image: url("./step4.png");
+}
+
