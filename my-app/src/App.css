@@ -1,14 +1,17 @@
-
 @keyframes color-changes {
-  0% {background-color: red;}
+  0% {
+    background-color: red;
+  }
   50% {
     background-color: #ff4242;
     transform: scale(1.2);
   }
 }
 
-
-html, body, #root, .App {
+html,
+body,
+#root,
+.App {
   height: 100%;
 }
 
@@ -38,6 +41,16 @@ html, body, #root, .App {
   margin-left: 8px;
 }
 
+.demo-text {
+  height: 50px;
+  margin-left: 8px;
+  font-size: small;
+  position: absolute;
+  left: 0;
+  top: 2px;
+  z-index: 4;
+}
+
 .content {
   position: relative;
   height: 100%;
@@ -58,7 +71,6 @@ html, body, #root, .App {
   background-repeat: no-repeat;
 }
 
-
 .status {
   position: relative;
   height: 300px;
@@ -70,7 +82,7 @@ html, body, #root, .App {
 }
 
 .status:after {
-  content: ' ';
+  content: " ";
   height: 240px;
   width: 240px;
   border-radius: 50%;
@@ -119,10 +131,10 @@ html, body, #root, .App {
   display: none;
 }
 
-
 .wave:nth-of-type(2) {
   top: -175px;
-  animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.125s infinite, swell 7s ease -1.25s infinite;
+  animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.125s infinite,
+    swell 7s ease -1.25s infinite;
   opacity: 1;
 }
 
@@ -143,10 +155,9 @@ html, body, #root, .App {
     transform: translate3d(0, 5px, 0);
   }
 }
-.endWave{
-  display:none;
+.endWave {
+  display: none;
 }
-
 
 .step-container {
   height: calc(100% - 400px);
@@ -161,7 +172,6 @@ html, body, #root, .App {
 }
 
 .step-container .description {
-
 }
 .step-container .testing-icon {
   background-image: url("./testing-icon.png");
@@ -184,11 +194,27 @@ html, body, #root, .App {
   height: 11em;
   border-radius: 50%;
   background: #ffffff;
-  background: -moz-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
-  background: -webkit-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -moz-linear-gradient(
+    left,
+    #ffffff 10%,
+    rgba(255, 255, 255, 0) 42%
+  );
+  background: -webkit-linear-gradient(
+    left,
+    #ffffff 10%,
+    rgba(255, 255, 255, 0) 42%
+  );
   background: -o-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
-  background: -ms-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
-  background: linear-gradient(to right, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -ms-linear-gradient(
+    left,
+    #ffffff 10%,
+    rgba(255, 255, 255, 0) 42%
+  );
+  background: linear-gradient(
+    to right,
+    #ffffff 10%,
+    rgba(255, 255, 255, 0) 42%
+  );
   position: relative;
   -webkit-animation: load3 1.4s infinite linear;
   animation: load3 1.4s infinite linear;
@@ -204,14 +230,14 @@ html, body, #root, .App {
   position: absolute;
   top: 0;
   left: 0;
-  content: '';
+  content: "";
 }
 .loader:after {
   background: #254084;
   width: 75%;
   height: 75%;
   border-radius: 50%;
-  content: '';
+  content: "";
   margin: auto;
   position: absolute;
   top: 0;
@@ -240,8 +266,7 @@ html, body, #root, .App {
   }
 }
 
-
-.step-container .btn{
+.step-container .btn {
   background: #2a9f2a;
   color: white;
   border-radius: 4px;
@@ -254,10 +279,19 @@ html, body, #root, .App {
   box-shadow: 0 8px 15px rgb(0 0 0 / 10%);
 }
 
-.step-container .btn.disable{
+.step-container .btn.disable {
   visibility: hidden;
 }
 
+.mock-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0%;
+  width: 25%;
+  height: 10%;
+  z-index: 4;
+}
 
 .App-logo {
   height: 40vmin;
