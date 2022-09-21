@@ -188,6 +188,9 @@ function App() {
                 <div className="image"/>
                 <Comp onNext={onNext}/>
             </div>
+
+            <div className="wave pre-loading"></div>
+
         </div>
     )
 
