@@ -43,12 +43,12 @@ body,
 
 .demo-text {
   height: 50px;
-  margin-left: 8px;
   font-size: small;
   position: absolute;
-  left: 0;
+  right: 5px;
   top: 2px;
   z-index: 4;
+  color: #535353;
 }
 
 .content {
