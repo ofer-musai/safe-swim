@@ -331,6 +331,7 @@ body,
 
 .step-container.cpr{
   justify-content: start;
+  padding-top: 20px;
 }
 
 .cpr-step {
@@ -341,8 +342,8 @@ body,
 }
 
 .cpr-step .icon {
-  height: 60px;
-  width: 60px;
+  height: 80px;
+  width: 80px;
   background-size: contain;
   background-repeat: no-repeat;
   flex-shrink: 0;

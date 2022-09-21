@@ -165,7 +165,7 @@ const CprStep = ({ onNext, isMockServer }) => {
 let isMockReturnActiveCurrIndex = 1;
 const MOCK_RETURNS_ACTIVE_INDEX = 14;
 
-const Main = ({ isMockServer }) => {
+const Main = ({ onNext, isMockServer }) => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
@@ -201,13 +201,14 @@ const Main = ({ isMockServer }) => {
 
   const muteSound = () => {
     sound.pause();
+    onNext();
   };
 
   return (
     <>
       <div className="image" />
       <div
-        onClick={muteSound}
+        onClick={isActive ? muteSound : () => {}}
         className={`status ${isActive ? "active" : "in-active"}`}
       >
         <div className="ocean">
