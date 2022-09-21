@@ -140,9 +140,7 @@ const TestingStep = ({ onNext, isMockServer }) => {
 let isMockReturnActiveCurrIndex = 1;
 const MOCK_RETURNS_ACTIVE_INDEX = 14;
 
-const Main = ({ isMockServer }) => {
-  const [isActive, setIsActive] = useState(false);
-
+const Main = ({ isMockServer, isActive, setIsActive }) => {
   useEffect(() => {
     const polling = async () => {
       const data = await getData();
@@ -197,6 +195,7 @@ const Main = ({ isMockServer }) => {
 function App() {
   const [step, setStep] = useState(1);
   const [isMockServer, setIsMockServer] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
   const mockServerButtonHandler = () => {
     const newIsMockServer = !isMockServer;
@@ -213,19 +212,37 @@ function App() {
 
   const Comp = step === 3 ? Main : step === 2 ? TestingStep : ConnectionStep;
 
+  const callForHelpHandler = () => {
+    window.location.href = "tel:101";
+  };
+
   return (
     <div className="App">
       <button className="mock-button" onClick={mockServerButtonHandler}>
         Mock Server
       </button>
       {isMockServer && <div className="demo-text">Demo</div>}
-      <div className="header">
-        <div className="header-logo" />
-        <div className="header-text">Safe Swim</div>
+      <div className="header-container">
+        <div className="header-overview" style={{ display: "flex" }}>
+          <div className="header-logo" />
+          <div className="header-text">Safe Swim</div>
+        </div>
+        {isActive && (
+          <div className="emergency" onClick={callForHelpHandler}>
+            <div className="phone-logo"></div>
+            <div>CALL FOR HELP</div>
+          </div>
+        )}
       </div>
+
       <div className="content">
         <div className="image" />
-        <Comp onNext={onNext} isMockServer={isMockServer} />
+        <Comp
+          onNext={onNext}
+          isMockServer={isMockServer}
+          isActive={isActive}
+          setIsActive={setIsActive}
+        />
       </div>
 
       <div className="wave pre-loading"></div>

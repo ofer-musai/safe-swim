@@ -8,6 +8,15 @@
   }
 }
 
+@keyframes emergency-animation {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
 html,
 body,
 #root,
@@ -15,16 +24,37 @@ body,
   height: 100%;
 }
 
-.header {
-  font-size: 30px;
+.header-overview {
+  padding-right: 65px;
+  font-size: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: row;
   color: #266399;
   font-weight: 600;
-  position: absolute;
   left: 20px;
   top: 34px;
+  z-index: 1;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-weight: 600;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  margin-top: 2rem;
+}
+.phone-logo {
+  background-image: url("./phone.png");
+  height: 40px;
+  width: 40px;
+  background-size: contain;
+  background-repeat: no-repeat;
   z-index: 1;
 }
 
@@ -326,4 +356,20 @@ body,
   to {
     transform: rotate(360deg);
   }
+}
+
+.emergency {
+  display: flex;
+  align-items: center;
+  background-color: black;
+  color: red;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 2em;
+  font-size: 20px;
+  gap: 12px;
+  margin-bottom: 2em;
+  animation-name: emergency-animation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
 }
