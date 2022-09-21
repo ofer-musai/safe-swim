@@ -88,7 +88,12 @@ html, body, #root, .App {
 }
 
 .status.active .ocean {
-  display: none;
+  background: #7a0000;
+}
+
+.status.active .wave {
+  background: url("./wave-red.svg") repeat-x;
+  animation: wave 1.5s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
 }
 
 .ocean {
