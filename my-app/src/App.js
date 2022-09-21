@@ -137,28 +137,32 @@ const TestingStep = ({ onNext, isMockServer }) => {
   );
 };
 
-
 const CprStep = ({ onNext, isMockServer }) => {
+  const callForHelpHandler = () => {
+    window.location.href = "tel:101";
+  };
 
   return (
-      <div className="step-container cpr">
-        <div className="cpr-step">
-          <div className="icon step1"/>
-          <div className="text">Call 911 or ask someone else to</div>
-        </div>
-        <div className="cpr-step">
-          <div className="icon step2"/>
-          <div className="text">Lay the person on their back and open their airways</div>
-        </div>
-        <div className="cpr-step">
-          <div className="icon step3"/>
-          <div className="text">If they are not breathing, start CPR</div>
-        </div>
-        <div className="cpr-step">
-          <div className="icon step4"/>
-          <div className="text">2 chest compressions every second</div>
+    <div className="step-container cpr">
+      <div className="cpr-step" onClick={callForHelpHandler}>
+        <div className="icon step1" />
+        <div className="text">Call 911 or ask someone else to</div>
+      </div>
+      <div className="cpr-step">
+        <div className="icon step2" />
+        <div className="text">
+          Lay the person on their back and open their airways
         </div>
       </div>
+      <div className="cpr-step">
+        <div className="icon step3" />
+        <div className="text">If they are not breathing, start CPR</div>
+      </div>
+      <div className="cpr-step">
+        <div className="icon step4" />
+        <div className="text">2 chest compressions every second</div>
+      </div>
+    </div>
   );
 };
 
@@ -237,8 +241,14 @@ function App() {
     setStep(step + 1);
   };
 
-
-  const Comp =  step === 4 ? CprStep : step === 3 ? Main : step === 2 ? TestingStep : ConnectionStep;
+  const Comp =
+    step === 4
+      ? CprStep
+      : step === 3
+      ? Main
+      : step === 2
+      ? TestingStep
+      : ConnectionStep;
 
   return (
     <div className="App">
