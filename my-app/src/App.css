@@ -331,7 +331,7 @@ body,
 
 .step-container.cpr{
   justify-content: start;
-  padding-top: 20px;
+  padding-top: 0;
 }
 
 .cpr-step {
