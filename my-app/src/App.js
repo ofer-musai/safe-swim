@@ -101,7 +101,7 @@ const TestingStep = ({ onNext, isMockServer }) => {
       if (isMockServer) {
         setTimeout(() => {
           setIsTested(true);
-        }, INTERVAL_DELAY * 2);
+        }, INTERVAL_DELAY * 4);
 
         return;
       }
@@ -123,7 +123,9 @@ const TestingStep = ({ onNext, isMockServer }) => {
 
   return (
     <div className="step-container">
-      <div className="description">Make sure to test it before using it</div>
+      <div className="description">
+        Put device in water to test all is working!
+      </div>
       <div className={`icon testing-icon ${isTested ? "enable" : "disable"}`} />
       <div
         className={`btn ${isTested ? "enable" : "disable"}`}
